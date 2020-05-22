@@ -1,3 +1,5 @@
+import math
+
 print ('Hello WOrld') 
 #%% Question 1
 print('Total Seoconds is ' , 42 * 60 + 42)
