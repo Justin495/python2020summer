@@ -1,0 +1,197 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Exercise 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ex1. Python function that can take a list of words and returns the length of the longest one.\n",
+    "def get_the_longest_word(word_list):\n",
+    "    max_len = 0\n",
+    "    for word in word_list:\n",
+    "         if len(word) > max_len:\n",
+    "            max_len = len(word)\n",
+    "            result = word\n",
+    "            \n",
+    "    return max_len, result"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(15, 'polyfluoroalkyl')"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "get_the_longest_word(['Nebraska', 'PFAS', 'polyfluoroalkyl'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "12"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Ex.2 Python program that counts the number of characters in a string.\n",
+    "def string_count(string1):\n",
+    "    return len(set(list(string1)))\n",
+    "\n",
+    "string_count('uuuuiiiiiiieeeedddddlllllpppppaaaaaqqqqqcccccgggggtttttetetezaza')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Dictionary :  {1: 4, 3: 5, 4: 6, 2: 2, 0: 9}\n",
+      "Ascending order by value :  {0: 0, 2: 1, 1: 2, 4: 3, 3: 4}\n",
+      "Descending order by value :  {3: 4, 4: 3, 1: 2, 2: 1, 0: 0}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Ex.3 Python Program that sors a dictionary by value (ascending and descending).\n",
+    "import operator\n",
+    "dictionary = {1: 4, 3: 5, 4: 6, 2: 2, 0: 9}\n",
+    "print('Normal Dictionary : ',dictionary)\n",
+    "sorted_values = dict(sorted(d.items(), key=operator.itemgetter(1)))\n",
+    "print('Ascending order by value : ',sorted_values)\n",
+    "sorted_values = dict(sorted(d.items(), key=operator.itemgetter(1),reverse=True))\n",
+    "print('Descending order by value : ',sorted_values)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "rebraska Water CenteN\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Ex.4 Python program to change a string to a new string where first and last characters have exchanged.\n",
+    "def char_exchange(string2):\n",
+    "    return string2[-1:] + string2[1:-1] + string2[:1]\n",
+    "\n",
+    "print(char_exchange('Nebraska Water Center'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Ex.5 Python function that takes two lists and returns True if they have at least one common members\n",
+    "def common_member(list1, list2):\n",
+    "    result = False\n",
+    "    for x in list1:\n",
+    "        for y in list2:\n",
+    "            if x == y:\n",
+    "                result = True\n",
+    "                break\n",
+    "            return result\n",
+    "print(common_member([2, 3, 5], [2, 4, 9]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[2, 2, 1, 9]"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Ex.6 Python function that returns the minimum number of coins (.01, .1, .25, 1) that make a given value\n",
+    "def coin_changes(value):\n",
+    "    \n",
+    "    coins = [100, 25, 10, 1]\n",
+    "    value = int(value * 100)\n",
+    "    coins_number = []\n",
+    "    for c in coins:\n",
+    "        n = value // c\n",
+    "        coins_number.append(n)\n",
+    "        value -= n * c\n",
+    "    return coins_number\n",
+    "coin_changes(2.69)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
