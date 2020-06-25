@@ -35,16 +35,32 @@ class Exercise9 ( wx.Frame ):
 
         bSizer2.Add( self.m_staticText2, 0, wx.ALL, 5 )
 
-        self.dateBegin = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
-        bSizer2.Add( self.dateBegin, 0, wx.ALL, 5 )
+        #self.dateBegin = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+        #bSizer2.Add( self.dateBegin, 0, wx.ALL, 5 )
+        
+        dpc = wx.adv.DatePickerCtrl(self, size=(120,-1),
+                                style = wx.adv.DP_DROPDOWN
+                                      | wx.adv.DP_SHOWCENTURY
+                                      | wx.adv.DP_ALLOWNONE )
+        self.Bind(wx.adv.EVT_DATE_CHANGED, self.endingdate1, dpc)
+        bSizer2.Add(dpc, 0, wx.ALL, 50)
+
 
         self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"Ending Date", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText3.Wrap( -1 )
 
         bSizer2.Add( self.m_staticText3, 0, wx.ALL, 5 )
 
-        self.dateEnd = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
-        bSizer2.Add( self.dateEnd, 0, wx.ALL, 5 )
+        #self.dateEnd = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+        #bSizer2.Add( self.dateEnd, 0, wx.ALL, 5 )
+        
+        dpc = wx.adv.DatePickerCtrl(self, size=(120,-1),
+                                style = wx.adv.DP_DROPDOWN
+                                      | wx.adv.DP_SHOWCENTURY
+                                      | wx.adv.DP_ALLOWNONE )
+        self.Bind(wx.adv.EVT_DATE_CHANGED, self.endingdate1, dpc)
+        bSizer2.Add(dpc, 0, wx.ALL, 50)
+
 
         self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"USGS:Station ID", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.m_staticText1.Wrap( -1 )
@@ -125,14 +141,24 @@ class Exercise9 ( wx.Frame ):
     # Virtual event handlers, overide them in your derived class
     def downloadData( self, event ):
         event.Skip()
+    def startingdate1( self, event ):
+        event.Skip()
+
+    def endingdate1( self, event ):
+        event.Skip()
 
 
+    def startinddate1(self, evt):
+        self.log.write("startingdate1: %s\n" % evt.GetDate())
+   
+    def endingdate1(self, evt):
+        self.log.write("endingdate1: %s\n" % evt.GetDate())
 
     # Virtual event handlers, overide them in your derived class
     def downloadData( self, event ):
         #gauge_list = [self.txtID.GetValue()]
         gages = ('&site_no={}'.format(self.txtID.GetValue()))
-        period = '&period=&begin_date={}&end_date={}'.format('2000-01-01', '2019-12-31')
+        period = '&period=&begin_date={}&end_date={}'.format('startingdate1', 'endingdate1')
         url = 'https://waterdata.usgs.gov/nwis/dv?&cb_00060=on&format=rdb{}&referred_module=sw{}'.format(gages, period)
   
         #self.axes.plot([1, 2], [3, 4])
@@ -160,4 +186,3 @@ app = wx.App(redirect=True)
 frame = Exercise9(None)
 frame.Show()
 app.MainLoop()
-
