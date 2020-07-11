@@ -96,7 +96,21 @@ class Excercise9 ( wx.Frame ):
         bSizer11 = wx.BoxSizer( wx.HORIZONTAL )
 
         self.m_grid1 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
-
+       
+    #dpc = wx.adv.DatePickerCtrl(self, size=(120,-1),
+         #                       style = wx.adv.DP_DROPDOWN
+          #                            | wx.adv.DP_SHOWCENTURY
+           #                           | wx.adv.DP_ALLOWNONE )
+        #self.Bind(wx.adv.EVT_DATE_CHANGED, self.endingdate2, dpc)
+        #bSizer9.Add(dpc, 0, wx.ALL, 10)
+   
+    #dpc = wx.adv.DatePickerCtrl(self, size=(100,-1),
+         #                       style = wx.adv.DP_DROPDOWN
+          #                            | wx.adv.DP_SHOWCENTURY
+           #                           | wx.adv.DP_ALLOWNONE )
+        #self.Bind(wx.adv.EVT_DATE_CHANGED, self.startingdate2, dpc)
+       
+    #bSizer2.Add(dpc, 0, wx.ALL, 10)
         # Grid
         self.m_grid1.CreateGrid( 5, 5 )
         self.m_grid1.EnableEditing( True )
